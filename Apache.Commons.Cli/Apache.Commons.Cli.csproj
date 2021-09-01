@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Shared\Apache.Commons.Cli.AssemblyInfo.cs" Link="Apache.Commons.Cli.AssemblyInfo.cs" />
+  </ItemGroup>
+
+</Project>
