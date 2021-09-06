@@ -3,3 +3,7 @@
 ################################################################################
 
 /Apache.Commons.Cli/bin/Debug/net5.0
+/.vs
+/Apache.Commons.Cli/obj
+/Apache.Commons.Cli.Tests/bin/Debug/net5.0
+/Apache.Commons.Cli.Tests/obj

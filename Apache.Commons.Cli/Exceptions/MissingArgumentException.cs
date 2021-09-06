@@ -1,0 +1,57 @@
+#region Apache License
+/*
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+ */
+#endregion
+
+namespace Apache.Commons.Cli {
+
+    using System;
+
+    /// <summary>
+    /// Thrown when an option requiring an argument is not provided with an argument.
+    /// </summary>
+    [Serializable]
+    public class MissingArgumentException : ParseException {
+
+        /// <summary>
+        /// The option requiring additional arguments
+        /// </summary>
+        public Option MissingArgumentOption { get; init; }
+
+
+        /// <summary>
+        /// Construct a new <code>MissingArgumentException</code> with the specified detail message.
+        /// </summary>
+        /// <param name="message">The message that describes the error.</param>
+        public MissingArgumentException(string message)
+            : base(message) {
+
+        }
+
+
+        /// <summary>
+        /// Construct a new <code>MissingArgumentException</code> with the specified detail message.
+        /// </summary>
+        /// <param name="option">The option requiring an argument.</param>
+        /// <since>1.2</since>
+        public MissingArgumentException(Option option)
+            : base("Missing argument for option: " + option.GetKey()) {
+
+            this.MissingArgumentOption = option;
+        }
+    }
+}

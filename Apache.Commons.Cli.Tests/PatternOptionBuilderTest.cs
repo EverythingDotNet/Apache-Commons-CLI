@@ -184,8 +184,8 @@ namespace Apache.Commons.Cli {
 
             MissingOptionException e = Assert.Throws<MissingOptionException>(() => parser.Parse(options, new string[] { "" }));
 
-            Assert.Equal(1, e.GetMissingOptions().Count);
-            Assert.True(e.GetMissingOptions().Contains("n"));
+            Assert.Equal(1, e.MissingOptions.Count);
+            Assert.True(e.MissingOptions.Contains("n"));
         }
     }
 }

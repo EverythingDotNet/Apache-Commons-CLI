@@ -156,9 +156,9 @@ namespace Apache.Commons.Cli {
 
             AlreadySelectedException e = Assert.Throws<AlreadySelectedException>(() => parser.Parse(_options, args));
 
-            Assert.NotNull(e.GetOptionGroup());
-            Assert.Equal("f", e.GetOptionGroup().GetSelected());
-            Assert.Equal("d", e.GetOption().GetOpt());
+            Assert.NotNull(e.OptionGroup);
+            Assert.Equal("f", e.OptionGroup.GetSelected());
+            Assert.Equal("d", e.Option.GetOpt());
         }
     
 
@@ -168,9 +168,9 @@ namespace Apache.Commons.Cli {
 
             AlreadySelectedException e = Assert.Throws<AlreadySelectedException>(() => parser.Parse(_options, args));
 
-            Assert.NotNull(e.GetOptionGroup());
-            Assert.Equal("f", e.GetOptionGroup().GetSelected());
-            Assert.Equal("d", e.GetOption().GetOpt());
+            Assert.NotNull(e.OptionGroup);
+            Assert.Equal("f", e.OptionGroup.GetSelected());
+            Assert.Equal("d", e.Option.GetOpt());
         }
 
 

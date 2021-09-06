@@ -71,7 +71,7 @@ namespace Apache.Commons.Cli.Bug {
 
             MissingArgumentException e = Assert.Throws<MissingArgumentException>(() => parser.Parse(options, args));
             
-            Assert.Equal("k", e.GetOption().GetOpt());
+            Assert.Equal("k", e.MissingArgumentOption.GetOpt());
         }
 
         

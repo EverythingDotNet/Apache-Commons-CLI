@@ -130,7 +130,7 @@ namespace Apache.Commons.Cli {
 
             UnrecognizedOptionException e = Assert.Throws<UnrecognizedOptionException>(() => parser.Parse(options, args));
     
-            Assert.Equal("-d", e.GetOption());
+            Assert.Equal("-d", e.UnrecognizedOption);
         }
 
 
@@ -140,7 +140,7 @@ namespace Apache.Commons.Cli {
 
             MissingArgumentException e = Assert.Throws<MissingArgumentException>(() => parser.Parse(options, args));
     
-            Assert.Equal("b", e.GetOption().GetOpt());
+            Assert.Equal("b", e.MissingArgumentOption.GetOpt());
         }
 
 
@@ -167,8 +167,8 @@ namespace Apache.Commons.Cli {
 
             MissingArgumentException e = Assert.Throws<MissingArgumentException>(() => parser.Parse(options, new string[] { "-n", "--", "-m" }));
 
-            Assert.NotNull(e.GetOption());
-            Assert.Equal("n", e.GetOption().GetOpt());
+            Assert.NotNull(e.MissingArgumentOption);
+            Assert.Equal("n", e.MissingArgumentOption.GetOpt());
         }
 
 
@@ -396,7 +396,7 @@ namespace Apache.Commons.Cli {
 
             UnrecognizedOptionException e = Assert.Throws<UnrecognizedOptionException>(() => parser.Parse(options, args));
 
-            Assert.Equal("--foo=bar", e.GetOption());
+            Assert.Equal("--foo=bar", e.UnrecognizedOption);
         }
 
 
@@ -409,7 +409,7 @@ namespace Apache.Commons.Cli {
 
             UnrecognizedOptionException e = Assert.Throws<UnrecognizedOptionException>(() =>parser.Parse(options, args));
         
-            Assert.Equal("-foobar", e.GetOption());
+            Assert.Equal("-foobar", e.UnrecognizedOption);
         }
 
 
@@ -422,7 +422,7 @@ namespace Apache.Commons.Cli {
 
             UnrecognizedOptionException e = Assert.Throws<UnrecognizedOptionException>(() => parser.Parse(options, args));
     
-            Assert.Equal("-f=bar", e.GetOption());
+            Assert.Equal("-f=bar", e.UnrecognizedOption);
         }
 
 
@@ -548,9 +548,9 @@ namespace Apache.Commons.Cli {
 
             AmbiguousOptionException e = Assert.Throws<AmbiguousOptionException>(() => parser.Parse(options, args));
 
-            Assert.Equal("--ver", e.GetOption());
-            Assert.NotNull(e.GetMatchingOptions());
-            Assert.Equal(2, e.GetMatchingOptions().Count);
+            Assert.Equal("--ver", e.UnrecognizedOption);
+            Assert.NotNull(e.MatchingOptions);
+            Assert.Equal(2, e.MatchingOptions.Count);
         }
 
 
@@ -564,9 +564,9 @@ namespace Apache.Commons.Cli {
 
             AmbiguousOptionException e = Assert.Throws<AmbiguousOptionException>(() => parser.Parse(options, args));
 
-            Assert.Equal("-ver", e.GetOption());
-            Assert.NotNull(e.GetMatchingOptions());
-            Assert.Equal(2, e.GetMatchingOptions().Count);
+            Assert.Equal("-ver", e.UnrecognizedOption);
+            Assert.NotNull(e.MatchingOptions);
+            Assert.Equal(2, e.MatchingOptions.Count);
         }
 
 
@@ -580,9 +580,9 @@ namespace Apache.Commons.Cli {
 
             AmbiguousOptionException e = Assert.Throws<AmbiguousOptionException>(() => parser.Parse(options, args));
 
-            Assert.Equal("--ver", e.GetOption());
-            Assert.NotNull(e.GetMatchingOptions());
-            Assert.Equal(2, e.GetMatchingOptions().Count);
+            Assert.Equal("--ver", e.UnrecognizedOption);
+            Assert.NotNull(e.MatchingOptions);
+            Assert.Equal(2, e.MatchingOptions.Count);
         }
 
         [Fact]
@@ -595,9 +595,9 @@ namespace Apache.Commons.Cli {
 
             AmbiguousOptionException e = Assert.Throws<AmbiguousOptionException>(() => parser.Parse(options, args));
 
-            Assert.Equal("-ver", e.GetOption());
-            Assert.NotNull(e.GetMatchingOptions());
-            Assert.Equal(2, e.GetMatchingOptions().Count);
+            Assert.Equal("-ver", e.UnrecognizedOption);
+            Assert.NotNull(e.MatchingOptions);
+            Assert.Equal(2, e.MatchingOptions.Count);
         }
 
 
@@ -666,7 +666,7 @@ namespace Apache.Commons.Cli {
             MissingOptionException e = Assert.Throws<MissingOptionException>(() => parser.Parse(options, args));
 
             Assert.Equal("Missing required option: b", e.Message);
-            Assert.True(e.GetMissingOptions().Contains("b"));
+            Assert.True(e.MissingOptions.Contains("b"));
         }
 
 
@@ -683,8 +683,8 @@ namespace Apache.Commons.Cli {
             MissingOptionException e = Assert.Throws<MissingOptionException>(() => parser.Parse(options, args));
 
             Assert.Equal("Missing required options: b, c", e.Message);
-            Assert.True(e.GetMissingOptions().Contains("b"));
-            Assert.True(e.GetMissingOptions().Contains("c"));
+            Assert.True(e.MissingOptions.Contains("b"));
+            Assert.True(e.MissingOptions.Contains("c"));
         }
 
 
@@ -703,8 +703,8 @@ namespace Apache.Commons.Cli {
 
             MissingOptionException e = Assert.Throws<MissingOptionException>(() => parser.Parse(options, new string[] { "-c" }));
 
-            Assert.Equal(1, e.GetMissingOptions().Count);
-            Assert.IsType<OptionGroup>(e.GetMissingOptions()[0]);
+            Assert.Equal(1, e.MissingOptions.Count);
+            Assert.IsType<OptionGroup>(e.MissingOptions[0]);
         }
 
 
@@ -775,7 +775,7 @@ namespace Apache.Commons.Cli {
 
             UnrecognizedOptionException e = Assert.Throws<UnrecognizedOptionException>(() => parser.Parse(options, args));
 
-            Assert.Equal("-adbtoast", e.GetOption());
+            Assert.Equal("-adbtoast", e.UnrecognizedOption);
         }
 
 
@@ -785,7 +785,7 @@ namespace Apache.Commons.Cli {
 
             MissingArgumentException e = Assert.Throws<MissingArgumentException>(() => parser.Parse(options, args));
 
-            Assert.Equal("b", e.GetOption().GetOpt());
+            Assert.Equal("b", e.MissingArgumentOption.GetOpt());
         }
 
 
